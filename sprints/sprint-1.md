@@ -37,12 +37,20 @@ Entregáveis desta sprint (detalhados):
 
 Tempo previsto: 1 semana. Se a equipe for iniciante, separar tarefas por dia e revisar impedimentos diariamente.
 
-Backlog desta sprint (prioridade clara):
+Backlog desta sprint (tarefas atômicas, priorizadas):
 
-- H01 — Formulário público (adaptado: sem upload)
-- H02 — API criar solicitação (adaptado: sem upload, validações mínimas, persistência)
-- H09 — Testes unitários e integração mínima (focar validadores e fluxo POST)
-- H10 — Infra / configuração dev (README, .env.example, instruções de execução local)
+- H01.1 — Inicializar repositório Spring Boot (esqueleto, dependências mínimas)
+- H01.2 — Configurar variáveis de ambiente e conexão com Postgres (`.env.example`)
+- H01.3 — Criar migration inicial / DDL (baseline)
+- H02.1 — Criar model `Reserva` (fields, constraints, documentação do DDL)
+- H02.2 — Criar repository `ReservaRepository` (interface com método `findByDataEvento`)
+- H02.3 — Implementar service: validar dia (sábado/domingo)
+- H02.4 — Implementar service: checar conflito por data (PENDING/APPROVED)
+- H02.5 — Criar controller `ReservaController` com endpoint POST `/api/solicitacoes` (contrato documentado)
+- H09.1 — Testes unitários dos validadores (dia da semana, CPF/CNPJ)
+- H09.2 — Teste de integração mínimo: POST cria reserva e persiste
+- H10.1 — README e instruções de desenvolvimento local (setup JDK, Postgres, Node)
+- H10.2 — Scripts de execução local (scripts para iniciar backend e frontend em dev)
 
 Dependências e pontos de atenção
 
