@@ -9,6 +9,26 @@ Plataforma simples para solicitação e gestão de agendamentos do espaço físi
 
 Objetivo: permitir um fluxo claro, auditável e responsivo de solicitações, garantindo que apenas sábados e domingos sejam agendados, com bloqueio automático de datas em análise e liberação em caso de rejeição.
 
+## Equipe e Propósito (TCC)
+
+- Este projeto é o Trabalho de Conclusão de Curso (TCC) de uma equipe de 5 desenvolvedores estudantes.
+- A equipe é composta por 5 devs estudantes responsáveis por projetar, implementar, documentar e validar o sistema.
+- Meu papel (orquestrador) é fornecer especificações, planejamento, divisão de tarefas, critérios de aceite e revisão de segurança/LGPD; eu NÃO escrevo código nem gero snippets de implementação.
+
+## Processo de Trabalho e Cerimônias
+
+- Sprint cadence: sprints semanais iniciais (1 semana) até estabilizar para 2 semanas conforme ritmo da equipe.
+- Cerimônias recomendadas: planejamento de sprint (kickoff), daily standup 15m, revisão/QA ao final da sprint, retrospectiva breve.
+- Controle de versão: cada atividade/significativa deve ser desenvolvida em branch dedicada (ex.: `feature/h01-formulario`) e submetida via PR para revisão.
+- Pull requests: título e descrição claros, vincular tarefas/IDs das sprints; reviewers: pelo menos 1 colega + orquestrador técnico (eu) para critérios e LGPD.
+- Código e commits: mensagens curtas no imperativo; separar commits por propósito (ci/testes/docs).
+
+## Como eu irei apoiar a equipe
+
+- Forneço SPECS detalhadas, critérios de aceite e checklist de QA para cada task.
+- Valido que as tasks contem todas as informações necessárias (arquitetura de alto nível, contratos, validações, requisitos não‑funcionais, critérios de aceite, e passos de QA) sem gerar código.
+- Auxilio na priorização e divisão de trabalho entre os 5 estudantes; reviso requisitos de segurança e LGPD antes do aceite de cada história.
+
 ## Tech Stack
 
 - Backend: Spring Boot (REST APIs)

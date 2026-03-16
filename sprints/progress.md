@@ -6,12 +6,24 @@ Este arquivo monitora o progresso das sprints e das tasks. Atualize as marcaçõ
 
 - Sprint 1 — Inicial: status: `in_progress` # valores: pending | in_progress | completed
 
+Equipe:
+
+- Dev 1 (estudante)
+- Dev 2 (estudante)
+- Dev 3 (estudante)
+- Dev 4 (estudante)
+- Dev 5 (estudante)
+
 ## Tasks Sprint 1
 
 - H01 — Formulário público: status: `pending`
 - H02 — API criar solicitação: status: `pending`
 - H09 — Testes unitários: status: `pending`
 - H10 — Observability / envs: status: `pending`
+
+Notas:
+
+- Atualize este arquivo para refletir o andamento; eu revisarei as marcações durante as cerimônias e antes do aceite.
 
 ---
 
