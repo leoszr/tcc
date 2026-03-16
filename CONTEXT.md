@@ -29,6 +29,38 @@ Objetivo: permitir um fluxo claro, auditável e responsivo de solicitações, ga
 - Valido que as tasks contem todas as informações necessárias (arquitetura de alto nível, contratos, validações, requisitos não‑funcionais, critérios de aceite, e passos de QA) sem gerar código.
 - Auxilio na priorização e divisão de trabalho entre os 5 estudantes; reviso requisitos de segurança e LGPD antes do aceite de cada história.
 
+## Regras para Tasks (modelo atômico)
+
+- Todas as tasks devem ser atômicas: uma task = uma unidade de trabalho pequena e bem definida que um estudante consegue completar em poucas horas ou, no máximo, um ou dois dias.
+- Exemplo de task atômica: `H01.1 - Inicializar projeto Spring Boot com dependências: web, data-jpa, postgresql, security (placeholder)` — essa task cria apenas o esqueleto do projeto e o arquivo de build; NÃO implementa controllers ou serviços.
+- Para cada classe planejada no backend (Controller, Service, Repository, Model) deve haver uma task separada. Ex.:
+  - `H02.1 - Criar model Reserva (fields, constraints, mapeamento DB)`
+  - `H02.2 - Criar repository Reserva (interface com métodos necessários)`
+  - `H02.3 - Criar service Reserva (métodos de negócio: criar, validar dia, checar conflito)`
+  - `H02.4 - Criar controller Reserva (endpoint POST /api/solicitacoes, validações de entrada)`
+- Cada task deve conter, obrigatoriamente, sem gerar código:
+  1. Objetivo claro e escopo: o que será entregue exatamente.
+  2. Entradas/saídas esperadas: campos, formatos, tipos e exemplos de payloads (sem snippets de implementação).
+  3. Critérios de aceite verificáveis: o que precisa ser testado e como validar (ex.: "ao enviar data em dia útil, receber 400 com mensagem X").
+  4. Dependências: outras tasks ou pré-requisitos (ex.: projeto inicializado, conexão com DB configurada).
+  5. Estimativa: horas ou dias.
+  6. Checklist de QA: passos curtos para o revisor validar a tarefa.
+- Prefira dividir tarefas que pareçam grandes em subtasks menores até que cada subtask seja realizável em poucas horas.
+- O orquestrador (eu) gera e valida as tasks e os critérios de aceite, mas NÃO produz código nem pseudocódigo. As tasks devem ser auto-suficientes para que cada estudante implemente a peça correspondente.
+
+## Exemplo prático de decomposição (Reserva)
+
+- H02 - Implementar fluxo Reserva (epic)
+  - H02.1 - Inicializar entidade Reserva (model) — fields e constraints
+  - H02.2 - Criar migration / DDL para tabela reservas
+  - H02.3 - Implementar Repository com método findByDataEvento
+  - H02.4 - Implementar Service: validar dia (sábado/domingo)
+  - H02.5 - Implementar Service: checar conflito de data
+  - H02.6 - Implementar Controller: POST /api/solicitacoes (chama service e persiste)
+  - H02.7 - Escrever testes unitários para validadores (dia, CPF/CNPJ)
+
+Cada item acima é uma task independente com critérios de aceite e checklist descritos nas respectivas tasks.
+
 ## Tech Stack
 
 - Backend: Spring Boot (REST APIs)
