@@ -1,0 +1,24 @@
+# H03 — Criar migration inicial / DDL (baseline)
+
+Objetivo:
+Criar a migration inicial que define a tabela `reservas` com colunas essenciais para a sprint (id, data_evento, hora_inicio, hora_fim, nome_requerente, cpf_cnpj, email, status, created_at) usando a ferramenta de migrations escolhida (Flyway ou Liquibase).
+
+Entradas / Saídas:
+
+- Entrada: decisão sobre ferramenta de migration (Flyway/Liquibase)
+- Saída: arquivo de migration e instrução para aplicar a migration em dev.
+
+Critérios de Aceite:
+
+- Migration cria a tabela `reservas` conforme especificado.
+- Aplicando a migration em ambiente dev, a tabela aparece no schema do Postgres.
+
+Dependências:
+
+- H01 (esqueleto do backend) e H02 (config de BD) devem estar prontos.
+
+Estimativa: 0.5d (4 horas)
+
+Checklist de QA:
+
+- Executar comando de migration e verificar no banco que a tabela `reservas` foi criada com colunas e tipos esperados.
