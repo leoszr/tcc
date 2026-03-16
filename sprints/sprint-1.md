@@ -1,23 +1,34 @@
-# Sprint 1 — MVP Inicial (2 semanas)
+# Sprint 1 — Inicial (1 semana)
 
-Objetivo: entregar o MVP mínimo para permitir envio público de solicitações com anexos e aceite dos termos, painel único da escola para aprovar/rejeitar, bloqueio temporário de datas, envio de e‑mails e job de exclusão de eventos passados.
+Objetivo: preparar o projeto e entregar a mínima evidencia de fluxo de solicitação pública sem complexidade operacional: repositório, backend mínimo com endpoint de criação de solicitação (sem upload de arquivos), validação de dia da semana (sábado/domingo), persistência dos campos essenciais e front‑end simples que permita enviar uma solicitação e ver uma confirmação.
 
-Decisões adotadas:
+Decisões adotadas (reduzidas para iniciar):
 
-- PENDING permanece até ação manual da escola (sem liberação automática).
-- Exclusão automática de eventos e arquivos após a data do evento (job agendado).
-- Recuperação de senha via e‑mail (implementar nas sprints seguintes se necessário).
-- Anexos: jpg/png/pdf até 5 MB.
-- Envio de e‑mail assíncrono (fila simples).
+- Sem upload de anexos nesta sprint; anexos ficam para sprint seguinte.
+- Sem autenticação nem painel da escola nesta sprint (painel será alvo da Sprint 2).
+- PENDING permanece até ação manual (decisão futura sobre expiração automática).
+- Anexos, e‑mail, job de exclusão e fila de e‑mail adiados para sprints posteriores.
 
-Entregáveis:
+Entregáveis mínimos desta sprint:
 
-- Formulário público responsivo com validações e upload de documentos.
-- Endpoint `POST /api/solicitacoes` com validações e persistência (status PENDING).
-- Armazenamento seguro de anexos com links temporários.
-- Painel da escola com JWT (login único), listagem e detalhe de reservas.
-- Endpoints de aprovar/rejeitar e envio de e‑mail.
-- Job para exclusão de eventos passados.
-- Testes unitários/integrados básicos e documentação mínima (OpenAPI/Postman).
+- Repositório inicial com README e scripts de execução (dev).
+- Backend (Spring Boot) com endpoint `POST /api/solicitacoes` que valida e persiste: `data_evento`, `hora_inicio` (opcional), `nome_requerente`, `email`, `cpf_cnpj`, `status` = `PENDING`.
+- Validação server-side: somente sábado ou domingo para `data_evento` e formato básico de CPF/CNPJ.
+- Frontend (React) simples: formulário single‑page sem upload, validações client‑side e chamada ao `POST` para criar solicitação; mostra confirmação com id retornado.
+- Testes unitários mínimos cobrindo validação de dia e criação.
 
-Backlog (priorizado): H01..H10 (cada task dentro de `tasks/`)
+Tempo previsto: 1 semana (ajustável)
+
+Backlog desta sprint (priorizado, subset das tasks existentes):
+
+- H01 — Formulário público (adaptado: sem upload)
+- H02 — API criar solicitação (adaptado: sem upload, validações mínimas)
+- H09 — Testes unitários e integração mínima (focar validações)
+- H10 — Observability e configuração básica (README, envs de dev)
+
+Itens adiados para Sprint 2 (fora do escopo atual): H03, H04, H05, H06, H07, H08 (storage, auth, painel, aprovar/rejeitar, e‑mail, job exclusão)
+
+Notas:
+
+- Esta sprint reduz a complexidade inicial para permitir que a equipe comece pelo essencial e valide o fluxo de solicitação pública.
+- Após entrega desta sprint, programar Sprint 2 com upload de anexos, painel da escola e notificações.
