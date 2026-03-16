@@ -1,34 +1,57 @@
-# Sprint 1 — Inicial (1 semana)
+# Sprint 1 — Inicial (start-from-zero, 1 semana)
 
-Objetivo: preparar o projeto e entregar a mínima evidencia de fluxo de solicitação pública sem complexidade operacional: repositório, backend mínimo com endpoint de criação de solicitação (sem upload de arquivos), validação de dia da semana (sábado/domingo), persistência dos campos essenciais e front‑end simples que permita enviar uma solicitação e ver uma confirmação.
+Objetivo: iniciar o projeto do zero e entregar um fluxo mínimo utilizável que permita validar a jornada do solicitante: desde o formulário público até a persistência inicial no banco. A prioridade é criar a base do repositório, ambiente de desenvolvimento, contrato do endpoint e uma interface simples que permita enviar solicitações.
 
-Decisões adotadas (reduzidas para iniciar):
+Escopo reduzido e justificado:
 
-- Sem upload de anexos nesta sprint; anexos ficam para sprint seguinte.
-- Sem autenticação nem painel da escola nesta sprint (painel será alvo da Sprint 2).
-- PENDING permanece até ação manual (decisão futura sobre expiração automática).
-- Anexos, e‑mail, job de exclusão e fila de e‑mail adiados para sprints posteriores.
+- Trabalhar a partir do repositório: estrutura inicial, README e scripts para rodar localmente.
+- Implementar backend mínimo com o endpoint de criação de solicitação (sem uploads, sem painel e sem envio de e‑mail).
+- Implementar frontend mínimo (React) com formulário que chame o endpoint e mostre confirmação.
+- Incluir testes e documentação mínima para que a equipe entenda onde continuar.
 
-Entregáveis mínimos desta sprint:
+Entregáveis desta sprint (detalhados):
 
-- Repositório inicial com README e scripts de execução (dev).
-- Backend (Spring Boot) com endpoint `POST /api/solicitacoes` que valida e persiste: `data_evento`, `hora_inicio` (opcional), `nome_requerente`, `email`, `cpf_cnpj`, `status` = `PENDING`.
-- Validação server-side: somente sábado ou domingo para `data_evento` e formato básico de CPF/CNPJ.
-- Frontend (React) simples: formulário single‑page sem upload, validações client‑side e chamada ao `POST` para criar solicitação; mostra confirmação com id retornado.
-- Testes unitários mínimos cobrindo validação de dia e criação.
+1. Repositório inicial
 
-Tempo previsto: 1 semana (ajustável)
+- README com objetivos do projeto, instruções para rodar localmente, convenções de branch, e checklist de revisão de PR.
+- Estrutura de pastas sugerida para backend/frontend/docs.
+- Arquivo de exemplo com variáveis de ambiente necessárias para desenvolvimento local.
 
-Backlog desta sprint (priorizado, subset das tasks existentes):
+2. Backend mínimo
+
+- Endpoint para receber solicitação pública (contrato documentado em docs).
+- Validações server-side: data do evento deve ser sábado ou domingo; CPF/CNPJ com validação básica; campos obrigatórios presentes.
+- Persistência mínima: tabela `reservas` com colunas essenciais (id, data_evento, hora_inicio, hora_fim, nome_requerente, cpf_cnpj, email, status, created_at).
+- Resposta consistente: incluir identificador da reserva e mensagem de confirmação.
+
+3. Frontend mínimo
+
+- Página única (single page) com formulário que contém os campos essenciais e validações client-side equivalentes às do backend.
+- Calendário ou seletor de data que indica claramente que apenas sábados e domingos são permitidos.
+- Fluxo de envio e tela de confirmação com o id retornado.
+
+4. Testes e documentação
+
+- Testes unitários para validadores críticos (dia da semana, CPF/CNPJ) e testes de integração básicos que verificam o fluxo de criação.
+- Documento em docs/ descrevendo o contrato do endpoint (campos, formatos, mensagens de erro) e instruções de QA.
+
+Tempo previsto: 1 semana. Se a equipe for iniciante, separar tarefas por dia e revisar impedimentos diariamente.
+
+Backlog desta sprint (prioridade clara):
 
 - H01 — Formulário público (adaptado: sem upload)
-- H02 — API criar solicitação (adaptado: sem upload, validações mínimas)
-- H09 — Testes unitários e integração mínima (focar validações)
-- H10 — Observability e configuração básica (README, envs de dev)
+- H02 — API criar solicitação (adaptado: sem upload, validações mínimas, persistência)
+- H09 — Testes unitários e integração mínima (focar validadores e fluxo POST)
+- H10 — Infra / configuração dev (README, .env.example, instruções de execução local)
 
-Itens adiados para Sprint 2 (fora do escopo atual): H03, H04, H05, H06, H07, H08 (storage, auth, painel, aprovar/rejeitar, e‑mail, job exclusão)
+Dependências e pontos de atenção
 
-Notas:
+- Equipe começa do zero: reservar tempo na sprint para configurar IDEs, Java JDK, Node.js, e ferramentas de banco (Postgres) — documentar em README.
+- Garantir que as validações sejam consistentes entre frontend e backend (mesma regra para sábado/domingo, CPF/CNPJ).
+- Estabelecer convenções de commit e PR desde o início para não perder tempo depois.
 
-- Esta sprint reduz a complexidade inicial para permitir que a equipe comece pelo essencial e valide o fluxo de solicitação pública.
-- Após entrega desta sprint, programar Sprint 2 com upload de anexos, painel da escola e notificações.
+Critérios de aceite (resumidos)
+
+- O projeto inicia com README e instruções para rodar localmente.
+- É possível enviar uma solicitação via UI e ver o registro persistido no banco com status PENDING.
+- Validadores críticos passam nos testes automatizados.
